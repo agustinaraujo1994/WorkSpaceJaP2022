@@ -7,7 +7,6 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -22,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="home.html">Inicio</a><!--Modifico index por home-->
+            <a class="nav-link active" href="home.html">Inicio</a><!--Modifico index por home-->
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -37,26 +36,48 @@
       </div>
     </div>
   </nav>
-  <!--<main class="pb-5 container">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  <main>
+    <div class="jumbotron text-center"></div>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
+              <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
+                alt="Imgagen representativa de la categoría 'Autos'">
+              <h3 class="m-3">Autos</h3>
+              <div class="card-body">
+                <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
+              <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
+                alt="Imgagen representativa de la categoría 'Juguetes'">
+              <h3 class="m-3">Juguetes</h3>
+              <div class="card-body">
+                <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
+              <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
+                alt="Imgagen representativa de la categoría 'Muebles'">
+              <h3 class="m-3">Muebles</h3>
+              <div class="card-body">
+                <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+        </div>
       </div>
     </div>
-  </main>-->
-  <main role="main" class="pb-5">
-    <div class="text-center p-4">
-      <h2>Productos</h2>
-      <p class="lead">Verás aquí todos los productos de la categoria Autos.</p>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="list-group" id="prod-list-container">
-
-            </div>
-        </div>
-    </div>
-</main>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -67,17 +88,9 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
 </body>
 
 </html>

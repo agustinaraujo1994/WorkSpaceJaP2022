@@ -14,6 +14,7 @@ let showSpinner = function(){
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
+let LIST_URL = PRODUCTS_URL+"101"+EXT_TYPE;
 
 let getJSONData = function(url){
     let result = {};
