@@ -22,8 +22,7 @@ main{
 	box-sizing: border-box;
   }
 
-  .g-signin2{
-	margin-top: 10%;
-	border: green solid;
+  #floatingInput{
+	margin-bottom: 2px;
   }
 

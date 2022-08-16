@@ -45,8 +45,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok")
         {
             categoriesArray = resultObj.data;
-            console.log(categoriesArray);
-            console.log(categoriesArray.products[1]);
             showCategoriesList(categoriesArray.products);
         }
     });

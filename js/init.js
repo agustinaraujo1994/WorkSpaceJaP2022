@@ -14,7 +14,7 @@ let showSpinner = function(){
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
-let LIST_URL = PRODUCTS_URL+"101"+EXT_TYPE;
+let LIST_URL = PRODUCTS_URL+"101"+EXT_TYPE;//Busco los datos de la categoria 101 que es autos
 
 let getJSONData = function(url){
     let result = {};
