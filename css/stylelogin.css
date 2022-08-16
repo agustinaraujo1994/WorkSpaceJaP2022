@@ -22,3 +22,7 @@ main{
 	box-sizing: border-box;
   }
 
+  .g-signin2{
+	border: green solid;
+  }
+
