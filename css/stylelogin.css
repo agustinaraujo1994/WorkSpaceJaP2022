@@ -23,6 +23,7 @@ main{
   }
 
   .g-signin2{
+	margin-top: 1%;
 	border: green solid;
   }
 
