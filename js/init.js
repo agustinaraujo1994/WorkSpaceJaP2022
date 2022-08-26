@@ -14,7 +14,7 @@ let showSpinner = function(){
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
-let LIST_URL = PRODUCTS_URL+"101"+EXT_TYPE;//Busco los datos de la categoria 101 que es autos
+let LIST_URL = PRODUCTS_URL+localStorage.catID+EXT_TYPE;//Busco los datos de la categoria segun la info de localstorage que es autos
 
 let getJSONData = function(url){
     let result = {};
@@ -40,3 +40,9 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+console.log("la catid es: " + localStorage.catID);
+console.log("el usr logeado es: " +localStorage.usrName);
+
+let nombre = document.getElementById("usr-name");
+nombre.innerHTML = localStorage.usrName;
