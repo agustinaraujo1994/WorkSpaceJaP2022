@@ -46,3 +46,16 @@ console.log("el usr logeado es: " +localStorage.usrName);
 
 let nombre = document.getElementById("usr-name");
 nombre.innerHTML = localStorage.usrName;
+
+
+//quiero ver que al cerrar la pestaña borre la info del usuario logeado y luego una funcion que pregunte si el
+//usuario guardado es distinto a undefined le de ingreso sino muestre una ventana que redirija a logearse
+/*window.addEventListener("onbeforeunload",function(evento)
+{ localStorage.removeItem("usrName");
+});*/
+
+/*window.onbeforeunload = preguntarAntesDeSalir;
+
+function preguntarAntesDeSalir(){
+return "¿Seguro que quieres salir?";
+};*/
