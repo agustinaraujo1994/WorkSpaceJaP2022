@@ -41,21 +41,9 @@ let getJSONData = function(url){
     });
 }
 
-console.log("la catid es: " + localStorage.catID);
-console.log("el usr logeado es: " +localStorage.usrName);
+//console.log("la catid es: " + localStorage.catID);
+//console.log("el usr logeado es: " +localStorage.usrName);
 
 let nombre = document.getElementById("usr-name");
-nombre.innerHTML = localStorage.usrName;
+nombre.innerHTML = localStorage.usrName;  //Muestro el usuario logeado en el lugar indicado
 
-
-//quiero ver que al cerrar la pestaña borre la info del usuario logeado y luego una funcion que pregunte si el
-//usuario guardado es distinto a undefined le de ingreso sino muestre una ventana que redirija a logearse
-/*window.addEventListener("onbeforeunload",function(evento)
-{ localStorage.removeItem("usrName");
-});*/
-
-/*window.onbeforeunload = preguntarAntesDeSalir;
-
-function preguntarAntesDeSalir(){
-return "¿Seguro que quieres salir?";
-};*/

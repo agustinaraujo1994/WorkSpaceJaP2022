@@ -192,3 +192,24 @@ a.custom-card:hover {
 .buscar{
   float: left;
 }
+
+#img-articulos{
+  display: flex;
+  flex-direction: row;
+  max-width: 20%;
+}
+
+#img-articulos img{
+  margin-left: 15%;
+ }
+
+ #list-comentarios{
+  margin-left: 1px;
+  padding: 0;
+ }
+
+ #list-comentarios p{
+  margin: 0;
+  font-size: 13px;
+  margin-left: 10px;
+ }

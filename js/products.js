@@ -9,16 +9,22 @@ let minCount = undefined;
 let maxCount = undefined;
 let arraySearch = [];
 
+function setProdId(numId){
+    localStorage.setItem("prodID", numId);
+    window.location = "product-info.html";
+    console.log(localStorage.prodID);
+}
+
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showProductsList(array){
     let htmlContentToAppend = "";
     for(let i = 0; i < array.length; i++){ 
-
+                //Agrego las condiciones para contemplar el filtro po precio
                 if (((minCount == undefined) || (minCount != undefined && parseInt(productArray.products[i].cost) >= minCount)) &&
                 ((maxCount == undefined) || (maxCount != undefined && parseInt(productArray.products[i].cost) <= maxCount))){
                 let category = array[i];
                 htmlContentToAppend += `
-                <div class="list-group-item list-group-item-action">
+                <div onclick="setProdId(${category.id})" class="list-group-item list-group-item-action cursor-active">
                     <div class="row">
                         <div class="col-3">
                             <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -41,12 +47,12 @@ function showProductsList(array){
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend; 
  
 };
-
+//Me cambia el nombre de la categoria que se muestra de acuerdo a la que se ingresa
 function nombreCategoria(nombre){
     let htmlContentToAppend = "Verás aquí todos los productos de la categoria ";
     document.getElementById("tit-categoria").innerHTML= `Verás aquí todos los productos de la categoria ` + nombre.catName
 }
-
+//funcion que permite ordenar y mostrar los articulos
 function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;
 
@@ -54,23 +60,27 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
         currentCategoriesArray = categoriesArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    currentCategoriesArray = sortProducts(currentSortCriteria, currentCategoriesArray);
 
     //Muestro los productos ordenadas
     showProductsList(currentCategoriesArray);
 };
 
+//funcion que verifica si el texto ingresado para buscar se encuentra en el nombre o descripcion del articulo
+//va armando un nuevo array con los articulos que cumplan la coincidencia 
 function busquedaTexto(texto,array){
     let arraySearch = [];
     let j=0;
     for (let i=0; i < array.length;i++ ){
-        if (array[i].name.includes(texto)){
+        if (array[i].name.includes(texto) || array[i].description.includes(texto)){
             arraySearch[j]=array[i];
             j=j+1;        
         }
     }
     return arraySearch
 }
+
+//utiliza la funcion anterior para buscar y mostrar los articulos que cumplen con la condicion que se esta escribiendo en el buscador
 
 function buscarAndShowProducts(texto,array){
 
@@ -137,22 +147,23 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
+        document.getElementById("search").value = "";
 
         minCount = undefined;
         maxCount = undefined;
         showProductsList(productArray.products);
     });
-
+    //DESAFIATE: se incorpora un campo de busqueda segun nombre articulo y descripcion
+    //utilizo el evento input para que busque mientras el usuario va escribiendo
     document.getElementById("search").addEventListener("input",function(evento){
         let contenido = document.getElementById("search").value;
-        console.log(contenido);
         buscarAndShowProducts(contenido,productArray.products);
     });
 
 });
 
-
-function sortCategories(criteria, array){
+//funcion que ordena el arreglo segun un criterio de entrada
+function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -180,3 +191,4 @@ function sortCategories(criteria, array){
 
     return result;
 }
+
