@@ -59,6 +59,35 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
+//Funcion que permite darle el formato a la fecha según el que ya existe 
+function formatoFecha (fecha){
+    let fechaConFormato ="";
+    let año = fecha.getFullYear();
+    let mes = "";
+    let dia ="";
+    let hora ="";
+    let minuto = "";
+    let segundo = "";
+    if ((fecha.getMonth() + 1)<10) {
+        mes = "0"+(fecha.getMonth() + 1)
+    } else { mes = (fecha.getMonth() + 1)};
+    if ((fecha.getDate() + 1)<10) {
+        dia = "0"+(fecha.getDate())
+    } else { dia = (fecha.getDate())};
+    if ((fecha.getHours()<10)) {
+        hora = "0"+(fecha.getHours())
+    } else { hora = (fecha.getHours())};
+    if ((fecha.getMinutes()<10)) {
+        minuto = "0"+(fecha.getMinutes())
+    } else { minuto = (fecha.getMinutes())};
+    if ((fecha.getSeconds()<10)) {
+        segundo = "0"+(fecha.getSeconds())
+    } else { segundo = (fecha.getSeconds())};
+    fechaConFormato = año + "-" + mes + "-" + dia + " " + " " + hora + ":" + minuto + ":" + segundo;
+    return fechaConFormato
+};
+
+//DESAFIATE:
 //Hago un nuevo evento y obtengo la url de comentario para el producto en cuestion
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(URL_COMENTARIOS).then(function(resultObj){
@@ -67,6 +96,21 @@ document.addEventListener("DOMContentLoaded", function(e){
             let comentariosArray = resultObj.data;
             console.log(comentariosArray);
             mostrarComentarios(comentariosArray);
+
+        document.addEventListener("submit",function(e){
+            e.preventDefault(); //evito la actulizacion de la pagina
+            let idProduct = localStorage.prodID; //voy guardando todos los datos que necesito agregar en el comentario
+            let score = document.getElementById("list-score").value;
+            let textComentario = document.getElementById("ingresar-comentario").value;
+            let usuario = localStorage.usrName;
+            let date = new Date ();
+            let fecha = formatoFecha(date); //utilizo la funcion que le da el formato a la fecha 
+            let nuevoitem = `{"product": "${idProduct}", "score": "${score}", "description": "${textComentario}", "dateTime" : "${fecha}", "user": "${usuario}"}` ;
+            let nuevoitemObj = JSON.parse(nuevoitem);
+            comentariosArray.push(nuevoitemObj);
+            mostrarComentarios(comentariosArray); //muestro nuevo arreglo de comentario que tiene nuevo item
+            document.getElementById("ingresar-comentario").value=""; //borro el contenido del campo del comentario
+        });
         }
     });
 });
