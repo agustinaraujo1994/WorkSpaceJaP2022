@@ -213,3 +213,23 @@ a.custom-card:hover {
   font-size: 13px;
   margin-left: 10px;
  }
+
+ #contenedor-rel{
+  display: flex;
+  flex-direction: row;
+ }
+
+ #img-articulo{
+  max-width: 60%;
+  margin-left: 20%;
+ }
+
+ .carousel{
+  max-width: 50%;
+  margin-left: 25%;
+ }
+
+ #imagenes-carrusel{
+  align-items: center;
+  text-align: center;
+ }

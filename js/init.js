@@ -44,6 +44,30 @@ let getJSONData = function(url){
 //console.log("la catid es: " + localStorage.catID);
 //console.log("el usr logeado es: " +localStorage.usrName);
 
-let nombre = document.getElementById("usr-name");
-nombre.innerHTML = localStorage.usrName;  //Muestro el usuario logeado en el lugar indicado
+function logout(){
+  localStorage.removeItem("usrName");
+  console.log("algo");
+
+}
+
+document.addEventListener("DOMContentLoaded",function(e){
+  let nombre = localStorage.usrName;
+  let htmlconenido = ` <div class="dropdown">
+  <a class="nav-item" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    ${nombre}
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+    <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+    <li><a class="dropdown-item" id="cerrar" href="index.html" onclick="logout()">Cerrar Sesión</a></li>
+  </ul>
+</div>` ;
+
+document.getElementById("usr-name").innerHTML = htmlconenido;
+
+});
+
+
+
 

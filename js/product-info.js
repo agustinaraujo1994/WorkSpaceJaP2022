@@ -1,6 +1,7 @@
 let URL = PRODUCT_INFO_URL+localStorage.prodID+".json";
 let URL_COMENTARIOS = PRODUCT_INFO_COMMENTS_URL+localStorage.prodID+".json";
 
+
 function showProductsList(array){
     let htmlContentToAppend = "";
                 let category = array;
@@ -16,11 +17,32 @@ function showProductsList(array){
                                         <strong>Cantidad vendidos</strong>
                                         <p>${category.soldCount}</p>
                                         <strong>Imágenes ilustrativas</strong>
-                                        <div id="img-articulos">
-                                            <img src="` + category.images[0] +` " alt="product image" class="img-thumbnail">
-                                            <img src="` + category.images[1] +` " alt="product image" class="img-thumbnail">
-                                            <img src="` + category.images[2] +` " alt="product image" class="img-thumbnail">
-                                            <img src="` + category.images[3] +` " alt="product image" class="img-thumbnail">
+                                        <div id="imagenes-carrusel">
+                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                          <div class="carousel-item active">
+                                            <img src="`+category.images[0]+`" class="d-block w-100" alt="...">
+                                          </div>
+                                          <div class="carousel-item">
+                                            <img src="`+category.images[1]+`" class="d-block w-100" alt="...">
+                                          </div>
+                                          <div class="carousel-item">
+                                            <img src="`+category.images[2]+`" class="d-block w-100" alt="...">
+                                          </div>
+                                          <div class="carousel-item">
+                                          <img src="`+category.images[3]+`" class="d-block w-100" alt="...">
+                                        </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                          <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                          <span class="visually-hidden">Next</span>
+                                        </button>
+                                      </div>
+                                      
                                         </div>` 
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend; 
  
@@ -47,7 +69,25 @@ function mostrarComentarios(array){
     document.getElementById("coment-list-container").innerHTML = htmlContentToAppend;
 };
 
-console.log(URL_COMENTARIOS);
+function setProdId(numId){
+    localStorage.setItem("prodID", numId);
+    window.location = "product-info.html";
+    console.log(localStorage.prodID);
+};
+
+function mostrarProdRel(array){
+    htmlContentToAppend = `<hr><br><strong>Productos Relacionados</strong>`
+    htmlContentToAppend += `<div id="contenedor-rel">`
+    for (let i=0;i<array.length;i++){
+        htmlContentToAppend += ` <div><div onclick="setProdId(${array[i].id})" id="img-articulo" class=" list-group-item-action cursor-active">
+        <img src="` + array[i].image +` " alt="product image" class="img-thumbnail">
+        <p>` + array[i].name +`</p>
+        </div></div>` 
+    }; 
+    htmlContentToAppend += `</div>`
+    document.getElementById("prod-rel-container").innerHTML = htmlContentToAppend;
+};
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(URL).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -55,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             productArray = resultObj.data;
             console.log(productArray);
             showProductsList(productArray);
+            mostrarProdRel(productArray.relatedProducts);
         }
     });
 });
