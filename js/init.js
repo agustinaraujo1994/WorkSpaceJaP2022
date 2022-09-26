@@ -68,6 +68,11 @@ document.getElementById("usr-name").innerHTML = htmlconenido;
 
 });
 
-
+document.addEventListener("DOMContentLoaded",function(e){
+  if (localStorage.usrName == undefined){
+    alert("Debe ingresar sesión");
+    window.location="index.html";
+  }
+});
 
 
