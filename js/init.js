@@ -76,3 +76,17 @@ document.addEventListener("DOMContentLoaded",function(e){
 });
 
 
+function comprarArt(){
+  let arrayCarrito = JSON.parse(localStorage.arrayCarrito);
+  let arrayProducto = JSON.parse(localStorage.infoProducto);
+  let nuevoitem = `{"id":${arrayProducto.id},"name":"${arrayProducto.name}","count":1,"unitCost":"${arrayProducto.cost}","currency":"${arrayProducto.currency}","image":"${arrayProducto.images[0]}"}`
+  let nuevoitemObj = JSON.parse(nuevoitem);
+  console.log(nuevoitemObj);
+  console.log(arrayCarrito);
+  arrayCarrito.articles.push(nuevoitemObj);
+  console.log(arrayCarrito);
+  localStorage.setItem("arrayCarrito",JSON.stringify(arrayCarrito));
+  alert("Articulo agregado con éxito");
+        
+}
+

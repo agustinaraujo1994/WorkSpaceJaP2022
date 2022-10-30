@@ -5,9 +5,12 @@ let URL_COMENTARIOS = PRODUCT_INFO_COMMENTS_URL+localStorage.prodID+".json";
 function showProductsList(array){
     let htmlContentToAppend = "";
                 let category = array;
+                localStorage.setItem("infoProducto",JSON.stringify(category));
                 htmlContentToAppend += `<br>
-                                        <h1> ${category.name} </h2>
+                                        <h1> ${category.name} </h1>
                                         <hr>
+                                        <button type="submit" class="btn btn-primary" onclick="comprarArt()">Comprar</button>
+                                        <br>
                                         <strong>Precio</strong>
                                         <p>${category.currency} ${category.cost}</p>
                                         <strong>Descripción</strong>
@@ -43,6 +46,7 @@ function showProductsList(array){
                                         </button>
                                       </div>
                                       
+                                      
                                         </div>` 
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend; 
  
@@ -72,7 +76,6 @@ function mostrarComentarios(array){
 function setProdId(numId){
     localStorage.setItem("prodID", numId);
     window.location = "product-info.html";
-    console.log(localStorage.prodID);
 };
 
 function mostrarProdRel(array){
@@ -93,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok")
         {
             productArray = resultObj.data;
-            console.log(productArray);
             showProductsList(productArray);
             mostrarProdRel(productArray.relatedProducts);
         }
@@ -135,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok")
         {
             let comentariosArray = resultObj.data;
-            console.log(comentariosArray);
             mostrarComentarios(comentariosArray);
 
         document.addEventListener("submit",function(e){

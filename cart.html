@@ -37,11 +37,159 @@
     </div>
   </nav>
   <main>
-    <div class="container">
+   <!--<div class="container">
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
+    </div>-->
+
+    <div class="container">
+      <div class="row">
+          <div class="list-group" id="contenedor-cart-tit">
+
+          </div>
+      </div>
     </div>
+
+    <div class="container">
+      <div class="row">
+          <div class="list-group" id="contenedor-cart">
+
+          </div>
+      </div>
+      <div id="alerta-cantidad">
+
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+
+        <form action="#" id="formulario">
+          <hr>
+          <br>
+          <h4>Tipo de envio</h4>
+          <div id="tipo-envio">
+            <input type="radio" name="envio" id="1" value="0.15" class="check-radio"> <label>Premium 2 a 5 dias (15%)</label><br>
+            <input type="radio" name="envio" id="2" value="0.07" class="check-radio"> <label>Express 5 a 8 dias (7%)</label><br>
+            <input type="radio" name="envio" id="3" value="0.05" class="check-radio"> <label>Standard 12 a 15 dias (5%)</label>
+          </div>
+          <br>
+          <div id="alerta-envio">
+            <p style="color: red;" >Debe seleccionar tipo de envio</p>
+          </div>
+          <h4>Dirección de envio</h4>
+          <div>
+          <label for="calle" class="form-label">Calle:</label>
+          <input type="text" id="calle" name="calle" class="form-control">
+          <p class="invalid-feedback" id="feedbackcalle" hidden>Debe ingresar una calle.</p>
+          </div>
+          <label for="calle" class="form-label">Número:</label>
+          <input type="text" id="numero" name="numero" class="form-control">
+          <p class="invalid-feedback" id="feedbacknumero" hidden>Debe ingresar un número.</p>
+          <label for="calle" class="form-label">Esquina:</label>
+          <input type="text" id="esquina" name="esquina" class="form-control">
+          <p class="invalid-feedback" id="feedbackesquina" hidden>Debe ingresar una esquina.</p>
+
+          <br>
+          <h4>Costos</h4>
+          <div class="container">
+            <div class="row">
+                <div class="list-group" id="contenedor-cost">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p>Subtotal</p>
+                          <p class="letra-chica">Costo unitario del producto por cantidad</p>
+                        </td>
+                        <td id="lista-costos-total">USD 0</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Costo de envio</p>
+                          <p class="letra-chica">Según el tipo de envio</p>
+                        </td>
+                        <td id="lista-costos-envio">USD 0</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Total</p>
+                        </td>
+                        <td id="lista-costos-suma">USD 0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+          <h4>Forma de Pago</h4>
+          <div class="container">
+            <div class="row">
+                <div class="list-group" id="forma-pago">
+                  <button class="btn" id="btn-forma-pago" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="validacionModal()" >Seleccionar forma de pago</button>
+                  <div id="modal-pago">
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="" id="form-modal">
+                              <br>
+                              <div>
+                                <input type="radio" name="tarjeta" id="tarjeta-credito">  <label for="">Tarjeta de Crédito</label>
+                                <hr>
+                                <label for="">Número de tarjeta: <input class="form-control" type="text" name="" id="num-tarjeta"></label>
+                                <p class="invalid-feedback" id="feedbacknum-tarjeta" hidden>Debe ingresar número de tarjeta.</p>
+                                <label for="">Código de seguridad:  <input class="form-control" type="text" name="" id="cod-seguridad"></label>
+                                <p class="invalid-feedback" id="feedbackcod-seguridad" hidden>Debe ingresar código de seguridad.</p>
+                                <label for="">Vencimiento (MM/aa):  <input class="form-control" type="text" name="" id="vencimiento"></label>
+                                <p class="invalid-feedback" id="feedbackvencimiento" hidden>Debe ingresar vencimiento.</p>
+                              </div>
+                              <br>
+                              <div>
+                                <input type="radio" name="tarjeta" id="transferencia">  <label for="">Transferencia Bancaria</label>
+                                <hr>
+                                <label for="">Número de cuenta: <input class="form-control" type="text" name="" id="num-cuenta"></label>
+                                <p class="invalid-feedback" id="feedbacknum-cuenta" hidden>Debe ingresar una calle.</p>
+
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="validaFormaPago()">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="alerta-forma-pago">
+                  <p style="color: red;" >No ha seleccionado forma de pago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn-submit">Finalizar Compra</button>
+          <br>
+          <br>
+        </form>
+        <br>
+
+      </div>
+    </div>
+
+   
+
   </main>
   <footer class="text-muted">
     <div class="container">

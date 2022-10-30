@@ -233,3 +233,40 @@ a.custom-card:hover {
   align-items: center;
   text-align: center;
  }
+
+ .img-art-cart{
+  max-width: 80px;
+ }
+
+
+ .lista-costos{
+  display: flex;
+  flex-direction: row;
+ }
+
+ .lista-costos-uno{
+  margin-right: 250px;
+  
+ }
+
+ .lista-costos-uno p{
+  margin-bottom: 0%;
+ }
+
+.lista-costos-dos{
+  margin-top: 1.5%;
+}
+
+
+td p{
+  margin-bottom: 0%;
+}
+ 
+.letra-chica{
+  font-size: 12px;
+}
+
+.alerta-envio{
+  color: red;
+}
+ 
